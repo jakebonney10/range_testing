@@ -1,0 +1,68 @@
+Range Testing Notes:
+
+Mooring Setup:
+    - November 2020 (2 tags on 11/17, 1 tag @ 7m on 11/19)
+        - VR2W_134922: Control Receiver Tag Line (5m depth)
+        - VR2W_135470: Bottom Reciever Soundtrap Line (3m from bottom)
+        - VR2W_135472: Top Reciever Soundtrap Line (7m from bottom)
+        - A69-1602-21114/5: Top V16 range testing tag (3m depth) 
+        - A69-1602-59950/1: Bottom V16 range testing tag (7m depth) 
+        - Soundtrap: (5m from bottom)
+    - May/June 2021 (West Passage)
+        - VR2W_135471: Control Receiver Tag Line (5m depth)
+        - VR2W_135470: Bottom Reciever Soundtrap Line (3m from bottom)
+        - VR2W_135472: Top Reciever Soundtrap Line (7m from bottom)
+        - A69-1602-59950/1: Bottom V16 range testing tag (7m depth) 
+        - Soundtrap: (5m from bottom)
+    - June 2021 (Sakonnet)
+        - VR2W_135471: Control Receiver Tag Line (2m depth)
+        - VR2W_135470: Bottom Reciever Soundtrap Line (2m from bottom)
+        - VR2W_135472: Top Reciever Soundtrap Line (5m from bottom)
+        - A69-1602-59950/1: Bottom V16 range testing tag (4m depth) 
+        - Soundtrap: (4m from bottom)
+
+
+November Range Testing:
+    - Day 1 (11/17): 2 test tags, ST in water @ 16:02, tagline in water @ 16:43, last ping @ 17:15:05,
+    hydrophone lat/lon 41.460005,-71.419141, last ping lat/lon 41.4537879266,-71.4155279472
+
+    - Day 2 (11/19): 1 test tag 7m (A69-1602-59950/1), ST in water @ 15:45, tagline in water @ 15:53, last ping @ 16:35:35,
+    hydrophone lat/lon 41.46142,-71.41901, last ping lat/lon 41.4591014665,-71.4184746891
+
+May Range Testing: 
+    - West Passage Drift+Anchor (5/6/21): 1 test tag 7m (A69-1602-59950/1), ST in water @ 15:10, tagline in water @ 15:18, tagline out @ 18:20, last ping @ 00:00:00,
+    hydrophone lat/lon 41.,-71., last ping lat/lon 41.,-71.
+        - Anchor 1: 15:31-15:55, 41.45755, 71.41794
+        - Anchor 2: 16:07-16:33, 41.45642, 71.41753
+        - Anchor 3: 16:45-17:04, 41.45553, 71.41720
+        - Anchor 4: 17:18-17:42, 41.45478, 71.41666
+        - Anchor 5: 17:55-18:14, 41.45380, 71.41631
+        - CTD 1: 15:00, 41.46097, 71.41861
+        - CTD 2: 17:00, 41.45553, 71.41720
+        - CTD 3: 18:10, 41.45380, 71.41631
+        - Environmental Noise: 16:28 powerboat 50m from ST N->S, 17:34 Sailboat undder power, 16:40-16:42 and 17:10-17:12 and 17:42-17:44 engine on, 17:40 small power boat moving fast center console, 18:15 big boat 40+ft 
+    
+    - East Passage Drift (5/6/21): 1 test tag 7m (A69-1602-59950/1), ST in water @ 19:00, tagline in water @ 19:07, tagline out @ 20:14, last ping @ 00:00:00,
+    hydrophone lat/lon 41.,-71., last ping lat/lon 41.,-71.
+
+    - Sakonnet River Drift+Anchor (5/21/21): 1 test tag 7m (A69-1602-59950/1), ST in water @ 15:56, tagline in water @ 16:00, tagline out @ 18:28, last ping @ 00:00:00,
+    hydrophone lat/lon 41.,-71., last ping lat/lon 41.,-71.
+            
+June Range Testing
+    - Sakonnet River Drift+Anchor (6/23/21): 1 test tag 4m (A69-1602-59950/1), ST in water @ 13:09, tagline in water @ 13:20, tagline out @ 16:00, last ping @ 00:00:00,
+    hydrophone lat/lon 41.51904,-71.22382, last ping lat/lon 41.,-71.
+        - Anchor 1: 13:23-13:48, 41.51789, 71.22358, depth: 7.1m
+        - Anchor 2: 13:53-14:18, 41.51723, 71.22337, depth: 7.1m
+        - Anchor 3: 14:22-14:47, 41.51625, 71.22321, depth: 7.4m
+        - Anchor 4: 14:51-15:16, 41.51545, 71.22302, depth: 7.4m
+        - Anchor 5: 15:20-15:45, 41.51442, 71.22260, depth: 7.4m
+        - CTD 1: 13:00, @ ST
+        - CTD 2: 14:27, @ Anchor 3
+        - CTD 3: 15:26, @ Anchor 5
+        - CTD 4: 15:53, @ 750m range
+        - Environmental Noise: Wind from N/NW @ 10kts, 9:25 lobster boat N-S 50m from ST, 9:27-9:32 powerboat N-S by ST, 9:50-9:51 engine on, 10:11 powerboat S-N @20-30kts,
+        10:13 sailboat under pwr N-S 50-100m from ST, 10:17-10:18 engine on, 10:23 powerboat 300-400m ST S-N, 10:26-10:27 engine on, wind 5kts N/NW, 10:54 sailboat 10m under sail, 
+        11:07 powerboat 400-500m from ST 20kts, 11:16 powerboat 400-500m from ST 20kts, 11:15-11:16 engine on, 11:22 sailboat 200m under sail N-S, 11:33 powerboat 25-50m 25kts N-S, 
+        11:27 powerboat 400m 25kts N-S
+        
+
