@@ -63,5 +63,3 @@ D50_silt_surface = rkm_silt_surface(find(tl_silt_surface(25:end) >= (157.5 - 80 
 D50_silt_depth = rkm_silt_depth(find(tl_silt_depth(25:end) >= (157.5 - 80 - 8),1)+25)*1000
 
 
-
-
