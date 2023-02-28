@@ -8,7 +8,7 @@
 clc; clear all; close all;
 
 %% Filename
-filename = ['BI_june_sand' ];
+filename = ['west_passage_8-4_69500'];
 
 %% Plot Model SSP
 figure
@@ -26,7 +26,7 @@ bellhop(filename) % Change env file to 'IB' case (incoherent TL, Gaussian Beam)
 figure
 plotshd(append(filename, '.shd'), 69000) 
 figure 
-[rkm_sand_surface, tl_sand] = plottlr(append(filename, '.shd'),4);
+[tl_69500, rkm] = plottlr(append(filename, '.shd'),10);
 grid on; grid minor;
 
 %% Save variables
@@ -62,4 +62,16 @@ D50_sand_depth = rkm_sand_depth(find(tl_sand_depth(25:end) >= (157.5 - 80 - 8),1
 D50_silt_surface = rkm_silt_surface(find(tl_silt_surface(25:end) >= (157.5 - 80 - 8),1)+25)*1000
 D50_silt_depth = rkm_silt_depth(find(tl_silt_depth(25:end) >= (157.5 - 80 - 8),1)+25)*1000
 
-
+%% Compare average of broadband frequency method (68500-69500)
+% run bellhop for both frequencies and save the TL output. 
+tl_ave = (tl_68500+tl_69500)./2;
+plot(rkm, 157.5 - tl_69000, 'r')
+hold on
+plot(rkm, 157.5 - tl_68500)
+plot(rkm, 157.5 - tl_69500)
+plot(rkm, 157.5 - tl_ave, 'k--')
+xlim([0 1.250]); ylim([60 160])
+grid on; legend;
+ylabel('SPL (dB re 1 uPa)')
+xlabel('Range (km)')
+title('Vemco Broadband Model Comparison')
