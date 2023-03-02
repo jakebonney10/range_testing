@@ -8,7 +8,7 @@
 clc; clear all; close all;
 
 %% Filename
-filename = ['west_passage_8-4_69500'];
+filename = ['west_passage_8-4'];
 
 %% Plot Model SSP
 figure
@@ -26,7 +26,7 @@ bellhop(filename) % Change env file to 'IB' case (incoherent TL, Gaussian Beam)
 figure
 plotshd(append(filename, '.shd'), 69000) 
 figure 
-[tl_69500, rkm] = plottlr(append(filename, '.shd'),10);
+[tl, rkm] = plottlr(append(filename, '.shd'),10);
 grid on; grid minor;
 
 %% Save variables
