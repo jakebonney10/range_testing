@@ -29,6 +29,21 @@ figure
 [tl, rkm] = plottlr(append(filename, '.shd'),10);
 grid on; grid minor;
 
+%% Bellhop arrivals
+%bellhop(filename) % Change env file to 'A' case (arrival)
+plotarr(append(filename, '.arr'), 501, 78, 1) % irr (receiver range), ird (receiver depth), isd (source depth)
+
+%% Propagate the source through the channel by convolving the modeled channel with the source signal (a 5 ms, 69 kHz ping).
+%TStart = -0.001; % Vemco 5ms pulse
+%TEnd   =  0.004;
+%sample_rate = 192000;
+%t_sts       = linspace( TStart, TEnd, ( TEnd - TStart ) * sample_rate )';
+%omega = 2 * pi * 69000; % Vemco 69 kHz source center frequency
+%pulse = 'P'; 
+%[ S, PulseTitle ] = cans(t_sts, omega, pulse) % create source timeseries
+%delayandsum() % convolve source timeseries with arrival time series.
+%plotts(filename)  % plot either the source or receiver timeseries.
+
 %% Save variables
 save('TL_sr_june','rkm_incoherent','tl_incoherent')
 
