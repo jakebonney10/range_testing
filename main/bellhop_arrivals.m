@@ -25,11 +25,16 @@ ird = 78; % receiver depth index
 isd = 1; % source depth index
 plotarr(append(filename, '.arr'), irr, ird, isd) 
 
-%% Create source signal timeseries
-
-
-%% Create receiver timeseries
-
-
-%% Propagate the source through the channel by convolving the model with the source signal
-
+%% Get recieve signal timeseries from .arr file
+[ Arr, Pos ] = read_arrivals_asc(append(filename, '.arr'));
+Narr = Arr( irr, ird, isd ).Narr;
+h = abs( Arr( irr, ird, isd ).A( 1 : Narr ) ); % received arrivals amplitude
+rts = real( Arr( irr, ird, isd ).delay( 1 : Narr ) ); % received arrivals time series
+figure
+stem(rts,h)
+xlabel( 'Time (s)' )
+ylabel( 'Amplitude' )
+title( [ 'Src_z  = ', num2str( Pos.s.z( isd ) ), ...
+   ' m    Rcvr_z = ', num2str( Pos.r.z( ird ) ), ...
+   ' m    Rcvr_r = ', num2str( Pos.r.r( irr ) ), ' m' ] )
+grid on
