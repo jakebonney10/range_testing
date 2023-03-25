@@ -32,16 +32,16 @@ for i = 1:length(PingTagIndex)
     loc_mean(i) = mean(locs); % Calculate mean of ping peak times
     error(i) = std(peaks); % Compute standard deviation of peaks
 
-%         % Plot demod/dec ST data interval
-%         figure(i+1)
-%         plot(t(ti),XM(ti)); hold on % Demod/dec ST data 
-%         plot(locs, peaks, '*')  % Plot peaks of transmissions
-%         
-%         % Format plot
-%         xlabel('Time (UTC)'); ylabel('Pressure (µPa)');title("Demodulated/Decimated ST Data "+ test_name)
-%         set(gca,'FontSize',15) % Sets FontSize to 15
-%         legend('Soundtrap')
-%         grid on; grid minor;
+        % Plot demod/dec ST data interval
+        figure(i)
+        plot(t(ti),XM(ti)); hold on % Demod/dec ST data 
+        plot(locs, peaks, '*')  % Plot peaks of transmissions
+        
+        % Format plot
+        xlabel('Time (UTC)'); ylabel('Pressure (µPa)');title("Demodulated/Decimated ST Data "+ test_name)
+        set(gca,'FontSize',15) % Sets FontSize to 15
+        legend('Soundtrap')
+        grid on; grid minor;
     
         % Plot line for receiver time
         %xline(control_receiver.time(PingTagIndex(i)),'r','LineWidth',2,'DisplayName','A69-1602-59951 (Hi/7m)')
