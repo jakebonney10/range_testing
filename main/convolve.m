@@ -30,16 +30,17 @@ t2 = (0:599999)/fs;
 %% Demodulation complex envelope calculation
 [X1,X2] = demod(y,f,fs,'qam');
 ymag = sqrt(X1.^2+X2.^2);
+spl_convolved = 20*log10(max(ymag)/1e-6);
 
 %% Plot signals
-subplot(4,1,1)
+subplot(5,1,1)
 plot(t, x)
 title('Source Signal')
 xlabel('Time (s)')
 ylabel('Amplitude')
 xlim([0 0.030])
 
-subplot(4,1,2)
+subplot(5,1,2)
 stem(delay, amplitude)
 title( [ 'Bellhop Arrivals ','Src_z  = ', num2str( Pos.s.z( isd ) ), ...
    ' m    Rcvr_z = ', num2str( Pos.r.z( ird ) ), ...
@@ -48,14 +49,14 @@ xlabel( 'Time (s)' )
 ylabel( 'Amplitude' )
 xl = xlim;
 
-subplot(4,1,3)
+subplot(5,1,3)
 plot(t2, y)
 title('Receive Signal')
 xlabel('Time (s)')
 ylabel('Amplitude')
 xlim([xl(1) xl(2)])
 
-subplot(4,1,4)
+subplot(5,1,4)
 plot(t2,ymag)
 xlim([xl(1) xl(2)])
 title('Complex Envelope')

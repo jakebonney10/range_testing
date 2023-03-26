@@ -10,15 +10,17 @@ clc, clearvars
 %% Filename
 filename = ['west_passage_8-4_A'];
 
-%% Run Bellhop in Arrivals mode
-%bellhop(filename) % Change env file to 'A' case (arrival mode)
+%% Run Bellhop in Arrivals mode and 
+bellhop(filename) % Change env file to 'A' case (arrival mode)
+
+%% Read .arr file output
+[ Arr, Pos ] = read_arrivals_asc(append(filename, '.arr'));
 
 %% Get recieve signal timeseries from .arr file...
 %  Plot arrivals for given range and depth index
 irr = 241; % receiver range index
 ird = 78; % receiver depth index
 isd = 1; % source depth index
-[ Arr, Pos ] = read_arrivals_asc(append(filename, '.arr'));
 Narr = Arr( irr, ird, isd ).Narr;
 delay = real( Arr( irr, ird, isd ).delay( 1 : Narr ) ); % received arrivals time series
 amplitude = abs( Arr( irr, ird, isd ).A( 1 : Narr ) ); % received arrivals amplitude
