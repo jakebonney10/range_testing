@@ -45,15 +45,15 @@ for i = 1:length(Arr)
     ymag = sqrt(X1.^2+X2.^2);
     spl_convolved(i) = 20*log10(max(ymag)/1e-6);
     alpha = 19.5279; % absorption coeficient
-    spl_abs(i) = spl_convolved(i) - Pos.r.r(i)*alpha/1000; % loss due to absorption
+    spl_att(i) = spl_convolved(i) - Pos.r.r(i)*alpha/1000; % loss due to absorption
     TL(i) = TL_geometric(Pos.r.r(i),alpha,15);
 end
 
 %% Plot 
 plot(1,157.5,'rx','MarkerSize',10,'LineWidth',2,'DisplayName','Source Level') % Plot SL of Hi Pingers @ 1m
 hold on
-plot(Pos.r.r, spl_att,'r','DisplayName','Bellhop Arrivals Convolution')
-plot(rkm_incoherent*1000, SL - tl_incoherent,'b','LineWidth',2,'DisplayName','Bellhop Incoherent TL')
+plot(Pos.r.r, spl_att,'b','DisplayName','Bellhop Arrivals Convolution')
+plot(rkm_incoherent*1000, SL - tl_incoherent,'r','LineWidth',2,'DisplayName','Bellhop Incoherent TL')
 xlim([0 1000])
 ylim([60 160])
 grid on; grid minor
@@ -62,5 +62,12 @@ xlabel('Range (meters)')
 title('Bellhop Arrivals vs Incoherent TL Output')
 legend
 plot(Pos.r.r, SL - TL,'k','LineWidth',2,'DisplayName','Simple Geometric TL')
+plot(range,SPL, 'r*'); hold on
 
+%% Smooth the signal using a moving average filter
+windowSize = 50;
+b = (1/windowSize)*ones(1,windowSize);
+a = 1;
+spl_smooth = filter(b,a,spl_att(5:end));
+plot(Pos.r.r(5:end), spl_smooth,'k','DisplayName','Bellhop Arrivals Convolution Smooth')
 
