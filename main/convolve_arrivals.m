@@ -9,8 +9,7 @@
 clc, clearvars
 
 %% Read .arr file output
-filename = ['BI_december_sand_A'; 'BI_december_silt_A'];
-%[ Arr, Pos ] = read_arrivals_asc(append(filename, '.arr'));
+filename = ['west_passage_8-4_A'];
 
 %% Generate source signal
 A = 1; % Amplitude of source signal
@@ -24,7 +23,7 @@ for k = 1:length(filename)
     
     [ Arr, Pos ] = read_arrivals_asc(append(filename(k,:), '.arr'));
 
-    for j = [1 166] % 9/80 for wp
+    for j = [find(Pos.r.z >= 10,1)] % 9/80 for wp, 1/166 for BI, 26 for SR, 47 for EP
     
         for i = 1:length(Arr)
     
@@ -77,9 +76,9 @@ for k = 1:length(filename)
         windowSize = 50;
         b = (1/windowSize)*ones(1,windowSize);
         a = 1;
-        spl_smooth = filter(b,a,SPL_att(5:end)); 
-        spl_smooth = [spl_smooth((windowSize/2+1):end), zeros(1,windowSize/2)]; % account for filter delay
-        plot(Pos.r.r(5:end), spl_smooth,'k','DisplayName','Bellhop Arrivals Convolution Smooth')
+        SPL_smooth = filter(b,a,SPL_att(5:end)); 
+        SPL_smooth = [SPL_smooth((windowSize/2+1):end), zeros(1,windowSize/2)]; % account for filter delay
+        plot(Pos.r.r(5:end), SPL_smooth,'k','DisplayName','Bellhop Arrivals Convolution Smooth')
         title( [ 'Bellhop Arrivals ','Src_z  = ', num2str( Pos.s.z( isd ) ), ...
            ' m    Rcvr_z = ', num2str( Pos.r.z( ird ) ), ...
            ' m    Rcvr_r = ', num2str( Pos.r.r( irr ) ), ' m' ] )
@@ -92,7 +91,11 @@ for k = 1:length(filename)
         yline(NL+DT,'-.', 'DisplayName','D50 Detection Threshold','LineWidth',2)
         disp(filename(k,:))
         disp(Pos.r.z(j))
-        D50 = Pos.r.r(find(spl_smooth(100:end) <= (NL + DT),1)+100)
+        D50 = Pos.r.r(find(SPL_smooth(100:end) <= (NL + DT),1)+100)
     end
 
 end
+
+%% Save variables
+XM_rms = 82;
+save(filename, 'Pos', 'SPL_smooth', 'XM_rms')

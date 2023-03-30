@@ -15,7 +15,7 @@ X = d.Range;
 test = d.Test;
 
 %% Plot Regression and Confidence Intervals Splice plot
-range_test = 6;% 1=wp_nov17, 2=wp_nov19, 3=wp_may06, 4=ep_may06, 5=sr_jun23, 6=wp_aug04
+range_test = 2;% 1=wp_nov17, 2=wp_nov19, 3=wp_may06, 4=ep_may06, 5=sr_jun23, 6=wp_aug04
 index = find(test == range_test);
 glm_data = sortrows([X(index) y(index)]);
 mdl = fitglm(glm_data(:,1),glm_data(:,2),'linear','Distribution','binomial')
@@ -50,11 +50,11 @@ d50 = find(yfit <= 0.5, 1)
 xline(range_vector(d50),'m--','DisplayName','D50 Range','LineWidth',2)
 
 %% Calculate Detection threshold level
-d50modelrange = find(rkm_incoherent*1000 >= d50,1);
-d50threshold = 157.5-tl_incoherent(d50modelrange)- XM_rms
+d50modelrange = find(Pos.r.r(5:end) >= d50,1); %Pos.r.r(5:end), SPL_smooth
+d50threshold = SPL_smooth(d50modelrange)- XM_rms
 
 %% Calculate Detection Threshold Range w/ Bellhop Output and NL
-threshold = 8; % dB above NL
+threshold = 6; % dB above NL
 tl_incoherent_trim = tl_incoherent(20:end);
 rkm_incoherent_trim = rkm_incoherent(20:end);
 bhop_range = rkm_incoherent_trim(find(tl_incoherent_trim >= (157.5 - XM_rms - threshold),1))*1000
