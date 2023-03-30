@@ -4,6 +4,7 @@
 
 % GOAL: Run Bellhop in "arrivals" mode and propagate the source through the
 %       channel by convolving the model with the source signal (5ms, 69kHz ping). 
+%       Plot a single arrival range/depth index.
 
 clc, clearvars
 
@@ -11,7 +12,7 @@ clc, clearvars
 filename = ['west_passage_8-4_A'];
 
 %% Run Bellhop in Arrivals mode and 
-%bellhop(filename) % Change env file to 'A' case (arrival mode)
+bellhop(filename) % Change env file to 'A' case (arrival mode)
 
 %% Read .arr file output
 [ Arr, Pos ] = read_arrivals_asc(append(filename, '.arr'));
