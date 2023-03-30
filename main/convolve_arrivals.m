@@ -9,7 +9,7 @@
 clc, clearvars
 
 %% Read .arr file output
-filename = ['west_passage_8-4_A'];
+filename = ['wp_november_sand_A';'wp_november_silt_A'];
 
 %% Generate source signal
 A = 1; % Amplitude of source signal
@@ -23,7 +23,7 @@ for k = 1:length(filename)
     
     [ Arr, Pos ] = read_arrivals_asc(append(filename(k,:), '.arr'));
 
-    for j = [find(Pos.r.z >= 10,1)] % 9/80 for wp, 1/166 for BI, 26 for SR, 47 for EP
+    for j = [find(Pos.r.z >= 1,1) find(Pos.r.z >= 10,1)] % 9/80 for wp, 1/166 for BI, 26 for SR, 47 for EP
     
         for i = 1:length(Arr)
     
@@ -87,7 +87,7 @@ for k = 1:length(filename)
         
         % Calculate D50 Range
         NL = 80; % Noise Level (dB)
-        DT = 8; % Detection Threshold (dB)
+        DT = 6; % Detection Threshold (dB)
         yline(NL+DT,'-.', 'DisplayName','D50 Detection Threshold','LineWidth',2)
         disp(filename(k,:))
         disp(Pos.r.z(j))
@@ -97,5 +97,6 @@ for k = 1:length(filename)
 end
 
 %% Save variables
-XM_rms = 82;
-save(filename, 'Pos', 'SPL_smooth', 'XM_rms')
+%XM_rms = 82;
+%save(filename, 'Pos', 'SPL_smooth', 'XM_rms')
+
