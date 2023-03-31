@@ -18,11 +18,8 @@ fs = 1e6; % Sampling frequency
 vemco_duration = 0.005; % 5ms signal
 [x, t] = generate_sts(f, fs, vemco_duration, A);
 
-<<<<<<< HEAD:main/auto_convolve.m
+
 %% Loop through each receiver range, depth, and filename and perform convolution...
-=======
-%% Loop through each receiver range and perform convolution...
->>>>>>> 4d8fd62fdb6ca198783bcdb5ebcbb32aa04899d1:main/convolve_arrivals.m
 for k = 1:size(filename,1)
     
     [ Arr, Pos ] = read_arrivals_asc(append(filename(k,:), '.arr'));
@@ -95,11 +92,7 @@ for k = 1:size(filename,1)
         yline(NL+DT,'-.', 'DisplayName','D50 Detection Threshold','LineWidth',2)
         disp(filename(k,:))
         disp(Pos.r.z(j))
-<<<<<<< HEAD:main/auto_convolve.m
         D50 = Pos.r.r(find(SPL_smooth(20:end) <= (NL + DT),1)+25)
-=======
-        D50 = Pos.r.r(find(SPL_smooth(100:end) <= (NL + DT),1)+105)
->>>>>>> 4d8fd62fdb6ca198783bcdb5ebcbb32aa04899d1:main/convolve_arrivals.m
     end
 
 end
