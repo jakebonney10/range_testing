@@ -103,20 +103,20 @@ yline(XM_rms,'DisplayName', 'RMS Noise Level (entire drift)')
 i = 37;
 ti = find(t >= control_receiver.time(PingTagIndex(i))- seconds(3.75) & t <= control_receiver.time(PingTagIndex(i))+ seconds(1.25)); % (+- 2.5 Hi pwr 11/19)
 
-    % Find peaks of transmission
-    [peaks, locs] = findpeaks(XM(ti), t(ti),'MinPeakHeight',1e4,'MinPeakDistance',seconds(.25),'NPeaks',8,'SortStr','descend');
-    peak_mean(i) = mean(peaks); % Calculate mean pressure level of ping peaks
-    loc_mean(i) = mean(locs); % Calculate mean of ping peak times
-    error(i) = std(peaks); % Compute standard deviation of peaks
+% Find peaks of transmission
+[peaks, locs] = findpeaks(XM(ti), t(ti),'MinPeakHeight',1e4,'MinPeakDistance',seconds(.25),'NPeaks',8,'SortStr','descend');
+peak_mean(i) = mean(peaks); % Calculate mean pressure level of ping peaks
+loc_mean(i) = mean(locs); % Calculate mean of ping peak times
+error(i) = std(peaks); % Compute standard deviation of peaks
 
-        % Plot demod/dec ST data interval
-        subplot(5,1,5)
-        plot(t(ti),XM(ti).*10^(-6)); hold on % Demod/dec ST data 
-        
-        % Format plot
-        xlabel('Time (UTC)'); ylabel('Pressure (µPa)');title("Demodulated/Decimated ST Data "+ test_name)
-        set(gca,'FontSize',9) % Sets FontSize to 15
-        legend('Soundtrap')
-        grid on; grid minor;
-        ZZZ = datetime(    "04-Aug-2021 16:19:52.3080", "Format",'dd-MMM-uuuu HH:mm:ss.SSSS');
-        xlim([ZZZ ZZZ+seconds(.03)])
+% Plot demod/dec ST data interval
+subplot(5,1,5)
+plot(t(ti),XM(ti).*10^(-6)); hold on % Demod/dec ST data 
+
+% Format plot
+xlabel('Time (UTC)'); ylabel('Pressure (µPa)');title("Demodulated/Decimated ST Data "+ test_name)
+set(gca,'FontSize',9) % Sets FontSize to 15
+legend('Soundtrap')
+grid on; grid minor;
+ZZZ = datetime(    "04-Aug-2021 16:19:52.3080", "Format",'dd-MMM-uuuu HH:mm:ss.SSSS'); % shitty datetime vectors
+xlim([ZZZ ZZZ+seconds(.03)])

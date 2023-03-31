@@ -53,12 +53,6 @@ xline(range_vector(d50),'m--','DisplayName','D50 Range','LineWidth',2)
 d50modelrange = find(Pos.r.r(5:end) >= d50,1); %Pos.r.r(5:end), SPL_smooth
 d50threshold = SPL_smooth(d50modelrange)- XM_rms
 
-%% Calculate Detection Threshold Range w/ Bellhop Output and NL
-threshold = 6; % dB above NL
-tl_incoherent_trim = tl_incoherent(20:end);
-rkm_incoherent_trim = rkm_incoherent(20:end);
-bhop_range = rkm_incoherent_trim(find(tl_incoherent_trim >= (157.5 - XM_rms - threshold),1))*1000
-
 %% Plot GLM fit all locations
 plot(linspace(0,1250,1250),yfit,'c-','LineWidth',2)
 legend('West Passage 11/17/21','West Passage 11/19/21','West Passage 05/06/21','East Passage 05/06/21','Sakonnet River 06/23/21','West Passage 08/04/21','d50 Probability')

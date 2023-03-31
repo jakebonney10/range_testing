@@ -1,8 +1,8 @@
-% convolve_arrivals script
+% auto_convolve script
 % Bonney
 % 3/29/2023
 
-% GOAL:  Read Bellhop "arrivals" mode output and propagate the source through the
+% GOAL: Read Bellhop "arrivals" mode output and propagate the source through the
 %       channel by convolving the model with the source signal (5ms, 69kHz ping). 
 %       Generate a plot showing receive level as a function of range. 
 
@@ -18,8 +18,8 @@ fs = 1e6; % Sampling frequency
 vemco_duration = 0.005; % 5ms signal
 [x, t] = generate_sts(f, fs, vemco_duration, A);
 
-%% Loop through each receiver range and perform convolution...
-for k = 1:length(filename)
+%% Loop through each receiver range, depth, and filename and perform convolution...
+for k = 1:size(filename,1)
     
     [ Arr, Pos ] = read_arrivals_asc(append(filename(k,:), '.arr'));
 
@@ -91,7 +91,7 @@ for k = 1:length(filename)
         yline(NL+DT,'-.', 'DisplayName','D50 Detection Threshold','LineWidth',2)
         disp(filename(k,:))
         disp(Pos.r.z(j))
-        D50 = Pos.r.r(find(SPL_smooth(100:end) <= (NL + DT),1)+100)
+        D50 = Pos.r.r(find(SPL_smooth(20:end) <= (NL + DT),1)+25)
     end
 
 end
